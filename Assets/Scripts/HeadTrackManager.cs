@@ -90,12 +90,12 @@ public class HeadTrackManager : MonoBehaviour {
         Vector3 pos = new Vector3(0.05f, 0, 0);//UnityARMatrixOps.GetPosition (anchorData.transform));
         Quaternion rot = new Quaternion(0, 0, 0, 0);// UnityARMatrixOps.GetRotation (anchorData.transform);
 
-if (camManager.DeviceCamUsed) {
-			headCenter.transform.position = pos; // in device cam viewing mode, don't invert on x because this view is mirrored
+        if (camManager.DeviceCamUsed) {
+			headCenter.transform.localPosition = pos; // in device cam viewing mode, don't invert on x because this view is mirrored
 			headCenter.transform.rotation = rot;
 		} else {
 			// invert on x because ARfaceAnchors are inverted on x (to mirror in display)
-			headCenter.transform.position = new Vector3 (-pos.x, pos.y, pos.z); 
+			headCenter.transform.localPosition = new Vector3 (-pos.x, pos.y, pos.z); 
 			headCenter.transform.rotation = new Quaternion( -rot.x, rot.y, rot.z, -rot.w); 
 		}
 
@@ -112,11 +112,11 @@ if (camManager.DeviceCamUsed) {
         Quaternion rot = new Quaternion(0, 0, 0, 0);// UnityARMatrixOps.GetRotation (anchorData.transform);
 
 		if (camManager.DeviceCamUsed) {
-			headCenter.transform.position = pos; // in device cam viewing mode, don't invert on x because this view is mirrored
+			headCenter.transform.localPosition = pos; // in device cam viewing mode, don't invert on x because this view is mirrored
 			headCenter.transform.rotation = rot;
 		} else {
 			// invert on x because ARfaceAnchors are inverted on x (to mirror in display)
-			headCenter.transform.position = new Vector3 (-pos.x, pos.y, pos.z);
+			headCenter.transform.localPosition = new Vector3 (-pos.x, pos.y, pos.z);
 			headCenter.transform.rotation = new Quaternion( -rot.x, rot.y, rot.z, -rot.w);
 		}
         if (Input.GetKeyDown(KeyCode.A))
@@ -135,7 +135,7 @@ if (camManager.DeviceCamUsed) {
             //deviceCamera.transform.eulerAngles += new Vector3(0, -10, 0);
         }
 		Debug.Log("DIFFFFFFFF : "+plusdif);
-        headCenter.transform.position += plusdif;
+        headCenter.transform.localPosition += plusdif;
 //currentBlendShapes = anchorData.blendShapes;
 
     }
@@ -157,18 +157,19 @@ if (camManager.DeviceCamUsed) {
 	// Update is called once per frame
 	void Update () {
 
-        Vector3 pos = new Vector3(0f, -0.06f, 0.5f);//UnityARMatrixOps.GetPosition (anchorData.transform));
+        //Vector3 pos = new Vector3(0f, -0.06f, 0.5f);//UnityARMatrixOps.GetPosition (anchorData.transform));
+        var pos = Vector3.zero;
         Quaternion rot = new Quaternion(0, 0, 0, 0);// UnityARMatrixOps.GetRotation (anchorData.transform);
 
         if (camManager.DeviceCamUsed)
         {
-            headCenter.transform.position = pos; // in device cam viewing mode, don't invert on x because this view is mirrored
+            headCenter.transform.localPosition = pos; // in device cam viewing mode, don't invert on x because this view is mirrored
             headCenter.transform.rotation = rot;
         }
         else
         {
             // invert on x because ARfaceAnchors are inverted on x (to mirror in display)
-            headCenter.transform.position = new Vector3(-pos.x, pos.y, pos.z);
+            headCenter.transform.localPosition = new Vector3(-pos.x, pos.y, pos.z);
             headCenter.transform.rotation = new Quaternion(-rot.x, rot.y, rot.z, -rot.w);
         }
         if (Input.GetKeyDown(KeyCode.A))
@@ -235,7 +236,7 @@ if (camManager.DeviceCamUsed) {
 
 
         Debug.Log("DIFFFFFFFF : " + plusdif);
-        headCenter.transform.position += plusdif;
+        headCenter.transform.localPosition += plusdif;
         //currentBlendShapes = anchorData.blendShapes;
 }
 
