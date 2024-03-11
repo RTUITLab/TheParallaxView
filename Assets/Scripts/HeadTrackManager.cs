@@ -25,7 +25,6 @@ public class HeadTrackManager : MonoBehaviour {
 
     public GameObject CameraDetectPosition;
     public GameObject ScenePosition;
-    public VideoPlayer VideoPlayer;
 
 	//public Light keylight;
 	public CameraManager camManager;
@@ -37,7 +36,6 @@ public class HeadTrackManager : MonoBehaviour {
 	public float IPD = 64f; // inter pupil distance (mm)
 	public float EyeHeight = 32f; // eye height from head anchor (mm)
 
-    
     private float screenWidth;
     private float screenHeight;
     public GameObject ball00, ballUp, ballRight;
@@ -78,22 +76,20 @@ public class HeadTrackManager : MonoBehaviour {
 
         FindObjectOfType<AstraInputController>().onDetectBody += OnDetectBody;//register the callback to track the player position
 
+        screenWidth = (Screen.width / Screen.dpi * 0.0254f) * 0.882f;
+        screenHeight = (Screen.height / Screen.dpi * 0.0254f) * 0.887f;
 
-       
-        screenWidth =( Screen.width / Screen.dpi * 0.0254f) * 0.882f;
-        screenHeight =( Screen.height / Screen.dpi * 0.0254f) * 0.887f;
-
-        virtualScreenWidth = Math.Abs(ballRight.transform.position.x - ball00.transform.position.x);
-        virtualScreenHeight = Math.Abs(ballUp.transform.position.y - ball00.transform.position.y);
+        virtualScreenWidth = Math.Abs(ballRight.transform.localPosition.x - ball00.transform.localPosition.x);
+        virtualScreenHeight = Math.Abs(ballUp.transform.localPosition.y - ball00.transform.localPosition.y);
 
         proportionW = virtualScreenWidth / screenWidth;
         proportionH = virtualScreenHeight / screenHeight;
         proportion = (proportionH + proportionW) / 2;
 
-        Vector3 campos = CameraDetectPosition.transform.position;
-        Vector3 scenepos = ScenePosition.transform.position;
-        virtualctosX = (campos.x * proportion - virtualScreenWidth/2 - scenepos.x);
-        virtualctosY = (campos.y * proportion - virtualScreenHeight/2 -  scenepos.y);
+        Vector3 campos = CameraDetectPosition.transform.localPosition;
+        Vector3 scenepos = ScenePosition.transform.localPosition;
+        virtualctosX = (campos.x * proportion - scenepos.x);
+        virtualctosY = (campos.y * proportion - scenepos.y);
         virtualctosZ = (campos.z * proportion - scenepos.z);
 
 
@@ -121,15 +117,15 @@ public class HeadTrackManager : MonoBehaviour {
 
 	void FaceAdded()//ARFaceAnchor anchorData)
     {
-        Vector3 pos = new Vector3(0, 0, 0);//UnityARMatrixOps.GetPosition (anchorData.transform));
+        Vector3 pos = new Vector3(0f, 0, 0);//UnityARMatrixOps.GetPosition (anchorData.transform));
         Quaternion rot = new Quaternion(0, 0, 0, 0);// UnityARMatrixOps.GetRotation (anchorData.transform);
 
-if (camManager.DeviceCamUsed) {
-			headCenter.transform.position = pos; // in device cam viewing mode, don't invert on x because this view is mirrored
+        if (camManager.DeviceCamUsed) {
+			headCenter.transform.localPosition = pos; // in device cam viewing mode, don't invert on x because this view is mirrored
 			headCenter.transform.rotation = rot;
 		} else {
 			// invert on x because ARfaceAnchors are inverted on x (to mirror in display)
-			headCenter.transform.position = new Vector3 (-pos.x, pos.y, pos.z); 
+			headCenter.transform.localPosition = new Vector3 (-pos.x, pos.y, pos.z); 
 			headCenter.transform.rotation = new Quaternion( -rot.x, rot.y, rot.z, -rot.w); 
 		}
 
@@ -142,15 +138,15 @@ if (camManager.DeviceCamUsed) {
     {
         
 
-        Vector3 pos = new Vector3(0, 0, 0);//UnityARMatrixOps.GetPosition (anchorData.transform));
+        Vector3 pos = new Vector3(0f, 0, 0);//UnityARMatrixOps.GetPosition (anchorData.transform));
         Quaternion rot = new Quaternion(0, 0, 0, 0);// UnityARMatrixOps.GetRotation (anchorData.transform);
 
 		if (camManager.DeviceCamUsed) {
-			headCenter.transform.position = pos; // in device cam viewing mode, don't invert on x because this view is mirrored
+			headCenter.transform.localPosition = pos; // in device cam viewing mode, don't invert on x because this view is mirrored
 			headCenter.transform.rotation = rot;
 		} else {
 			// invert on x because ARfaceAnchors are inverted on x (to mirror in display)
-			headCenter.transform.position = new Vector3 (-pos.x, pos.y, pos.z);
+			headCenter.transform.localPosition = new Vector3 (-pos.x, pos.y, pos.z);
 			headCenter.transform.rotation = new Quaternion( -rot.x, rot.y, rot.z, -rot.w);
 		}
         if (Input.GetKeyDown(KeyCode.A))
@@ -168,8 +164,8 @@ if (camManager.DeviceCamUsed) {
 
             //deviceCamera.transform.eulerAngles += new Vector3(0, -10, 0);
         }
-		
-        headCenter.transform.position += plusdif;
+		Debug.Log("DIFFFFFFFF : "+plusdif);
+        headCenter.transform.localPosition += plusdif;
 //currentBlendShapes = anchorData.blendShapes;
 
     }
@@ -191,18 +187,19 @@ if (camManager.DeviceCamUsed) {
 	// Update is called once per frame
 	void Update () {
 
-        Vector3 pos = new Vector3(-0.034f, -0.041f, 0.042f);//UnityARMatrixOps.GetPosition (anchorData.transform));
+        //Vector3 pos = new Vector3(0f, -0.06f, 0.5f);//UnityARMatrixOps.GetPosition (anchorData.transform));
+        var pos = Vector3.zero;
         Quaternion rot = new Quaternion(0, 0, 0, 0);// UnityARMatrixOps.GetRotation (anchorData.transform);
 
         if (camManager.DeviceCamUsed)
         {
-            headCenter.transform.position = pos; // in device cam viewing mode, don't invert on x because this view is mirrored
+            headCenter.transform.localPosition = pos; // in device cam viewing mode, don't invert on x because this view is mirrored
             headCenter.transform.rotation = rot;
         }
         else
         {
             // invert on x because ARfaceAnchors are inverted on x (to mirror in display)
-            headCenter.transform.position = new Vector3(-pos.x, pos.y, pos.z);
+            headCenter.transform.localPosition = new Vector3(-pos.x, pos.y, pos.z);
             headCenter.transform.rotation = new Quaternion(-rot.x, rot.y, rot.z, -rot.w);
         }
         if (Input.GetKeyDown(KeyCode.A))
@@ -268,8 +265,7 @@ if (camManager.DeviceCamUsed) {
         //  headCenter.transform.Rotate(new Vector3(10, 0, 0));
 
 
-        
-        headCenter.transform.position += plusdif;
+        headCenter.transform.localPosition += plusdif;
         //currentBlendShapes = anchorData.blendShapes;
 }
 
@@ -294,16 +290,16 @@ if (camManager.DeviceCamUsed) {
     private float kpSquare = 0.1f;  // Коэффициент пропорциональной части
     private float kiSquare = 0.00f;  // Коэффициент интегральной части
     private float kdSquare = 0.00f;  // Коэффициент дифференциальной части
-     
+
 
 
     //process the player position
     public void OnDetectBody(bool status, Vector3 bodyPos)
     {
-        
-        float xPos = Mathf.Clamp(bodyPos.x * 1f , -15f, 15f);//clamp the ball position
-        float yPos = Mathf.Clamp(bodyPos.y * 1f , -1.5f, 1.5f);
-        float zPos = Mathf.Clamp(bodyPos.z * 1f , -15f, 15f);
+
+        float xPos = Mathf.Clamp(bodyPos.x * 1f, -15f, 15f);//clamp the ball position
+        float yPos = Mathf.Clamp(bodyPos.y * 1f, -1.5f, 1.5f);
+        float zPos = Mathf.Clamp(bodyPos.z * 1f, -15f, 15f);
 
 
         PIDController controllerX = new PIDController(kpX, kiX, kdX, 0);
@@ -317,15 +313,15 @@ if (camManager.DeviceCamUsed) {
         yReg = yReg + (float)controllerY.compute(yReg);
         controllerZ.updateSetpoint((zPos));
         zReg = zReg + (float)controllerZ.compute(zReg);
-        
+
 
         if (status)
-            plusdif = new Vector3(xReg * proportion + virtualctosX, yReg * proportion - virtualctosY, -zReg*proportion + virtualctosZ);
-        Debug.Log("REG: " + xReg + " "+ yReg + " "+ zReg);
+            plusdif = new Vector3(xReg * proportion + virtualctosX, yReg * proportion - virtualctosY, zReg * proportion + virtualctosZ);
+        Debug.Log("REG: " + xReg + " " + yReg + " " + zReg);
         Debug.Log("POSPOSPOS: " + xPos + " " + yPos + " " + zPos);
-        Debug.Log("Screen2: "+screenWidth + " " + screenHeight);
+        Debug.Log("Screen2: " + screenWidth + " " + screenHeight);
         Debug.Log("Proportion: " + proportion);
-        Debug.Log("CtoS: " + virtualctosX + " "+ virtualctosY + " "+ virtualctosZ);
+        Debug.Log("CtoS: " + virtualctosX + " " + virtualctosY + " " + virtualctosZ);
     }
 
 }
