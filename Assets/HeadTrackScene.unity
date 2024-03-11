@@ -335,8 +335,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9294569}
   m_LocalRotation: {x: 0.7071068, y: 0.7071068, z: -0, w: 0}
-  m_LocalPosition: {x: -1.347, y: 0.002, z: -0.165}
-  m_LocalScale: {x: 0.062, y: 1, z: 0.033}
+  m_LocalPosition: {x: -1.35, y: 0, z: -0.165}
+  m_LocalScale: {x: 0.063, y: 1, z: 0.033}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1479682535}
@@ -2297,7 +2297,7 @@ Transform:
   m_GameObject: {fileID: 227736730}
   m_LocalRotation: {x: -0.7071068, y: 0.7071068, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: -0.165}
-  m_LocalScale: {x: 0.062, y: 1, z: 0.033}
+  m_LocalScale: {x: 0.064, y: 1, z: 0.033}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1479682535}
@@ -2525,7 +2525,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267410510}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.674, y: -0.309, z: -0.165}
+  m_LocalPosition: {x: -0.673, y: -0.31, z: -0.165}
   m_LocalScale: {x: 0.033, y: 1, z: 0.135}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3965,7 +3965,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519841710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.347, y: -0.31, z: 0}
+  m_LocalPosition: {x: -1.35, y: -0.31, z: 0}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4005,7 +4005,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4998,7 +4998,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 639168103}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.06, z: 0.2}
+  m_LocalPosition: {x: -0.0412, y: -0.0417, z: 0.1219}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6042,10 +6042,10 @@ MonoBehaviour:
   deviceCamera: {fileID: 10}
   eyeCamera: {fileID: 1738016221}
   lineRenderer: {fileID: 805898578}
-  left: -0.0019047629
-  right: 0.0061309515
-  bottom: -0.0007142858
-  top: 0.0029761903
+  left: -0.008142381
+  right: 0.0068743043
+  bottom: -0.0033704112
+  top: 0.00352614
   near: 0.01
   far: 10
   leftAdd: 0
@@ -6053,7 +6053,7 @@ MonoBehaviour:
   bottomAdd: 0.022
   topAdd: -0.04
   camManager: {fileID: 805898575}
-  nearDist: 0.168
+  nearDist: 0.0899
 --- !u!120 &805898578
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -6225,7 +6225,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6544,7 +6544,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 874677064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2666, y: 0, z: 0.0815}
+  m_LocalPosition: {x: 1.33, y: 0, z: 0.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6689,6 +6689,9 @@ MonoBehaviour:
   eyeInfoText: 
   IPD: 64
   EyeHeight: 32
+  ball00: {fileID: 1050939611}
+  ballUp: {fileID: 827035827}
+  ballRight: {fileID: 519841710}
   ARError: 
 --- !u!4 &890627619
 Transform:
@@ -7560,7 +7563,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10758, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9735,7 +9738,7 @@ VideoPlayer:
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 1
   m_SkipOnDrop: 1
-  m_Looping: 0
+  m_Looping: 1
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
   m_VideoShaders: []
