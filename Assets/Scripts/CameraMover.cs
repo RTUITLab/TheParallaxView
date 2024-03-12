@@ -29,6 +29,7 @@ public class CameraMover : MonoBehaviour
             _point.SetActive(value);
             _point.transform.position -= offset;
             Rotation = _point.transform.rotation;
+            Rotation = Quaternion.Euler(_point.transform.rotation.eulerAngles * -1);
         }
     }
 
@@ -165,9 +166,9 @@ public class CameraMover : MonoBehaviour
                 _minDiff = diff.magnitude;
                 _worldCameraPoint.position += _velocity * Time.deltaTime;
                 float mult = (_maxDiff - _minDiff) / _maxDiff;
+                Debug.Log($"Mult: {mult}");
                 _world.rotation = Quaternion.Lerp(_prevRotation, _rotation, RotationFunc(mult));
 
-                //TODO: PIDCONTROLLER
                 xPosController.updateSetpoint(_worldCameraPoint.position.x);
                 yPosController.updateSetpoint(_worldCameraPoint.position.y);
                 zPosController.updateSetpoint(_worldCameraPoint.position.z);
