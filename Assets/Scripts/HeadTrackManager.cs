@@ -88,9 +88,9 @@ public class HeadTrackManager : MonoBehaviour {
 
         Vector3 campos = CameraDetectPosition.transform.localPosition;
         Vector3 scenepos = ScenePosition.transform.localPosition;
-        virtualctosX = (campos.x * proportion - scenepos.x);
-        virtualctosY = (campos.y * proportion - scenepos.y);
-        virtualctosZ = (campos.z * proportion - scenepos.z);
+        virtualctosX = campos.x * proportion;
+        virtualctosY = campos.y * proportion;
+        virtualctosZ = campos.z * proportion - scenepos.z;
 
 
     }
@@ -316,12 +316,13 @@ public class HeadTrackManager : MonoBehaviour {
 
 
         if (status)
-            plusdif = new Vector3(xReg * proportion + virtualctosX, yReg * proportion - virtualctosY, zReg * proportion + virtualctosZ);
+            plusdif = new Vector3(CameraDetectPosition.transform.position.x - (xReg * proportion - virtualctosX), yReg * proportion - virtualctosY, zReg * proportion - virtualctosZ);
         Debug.Log("REG: " + xReg + " " + yReg + " " + zReg);
         Debug.Log("POSPOSPOS: " + xPos + " " + yPos + " " + zPos);
         Debug.Log("Screen2: " + screenWidth + " " + screenHeight);
         Debug.Log("Proportion: " + proportion);
         Debug.Log("CtoS: " + virtualctosX + " " + virtualctosY + " " + virtualctosZ);
+        Debug.Log("COOOL: "+ CameraDetectPosition.transform.localPosition.x * proportion +" " + (-virtualScreenWidth / 2) +" "+ (-ScenePosition.transform.localPosition.x));
     }
 
 }

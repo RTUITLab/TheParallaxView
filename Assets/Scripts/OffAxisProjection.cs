@@ -53,8 +53,6 @@ void LateUpdate()
 			bottom = trackedCamPos.y - 0.135f;
 		} else {*/
 
-		far = 10f; // may need bigger for bigger scenes, max 10 metres for now
-
 		var pos = eyeCamera.transform.position;
 		var hor = eyeCamera.transform.right * horizontal;
 		var ver = eyeCamera.transform.up * vertical;
