@@ -6124,13 +6124,14 @@ MonoBehaviour:
   deviceCamera: {fileID: 10}
   eyeCamera: {fileID: 1738016221}
   lookPoint: {fileID: 1549349191}
+  cameraParent: {fileID: 1877471711}
   lineRenderer: {fileID: 805898578}
   horizontal: 3.29
   vertical: 1.48
   near: 0.01
   far: 10
   camManager: {fileID: 805898575}
-  nearDist: 4.2
+  nearDist: 4.078
 --- !u!120 &805898578
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -6761,11 +6762,13 @@ MonoBehaviour:
   headCenter: {fileID: 639168103}
   CameraDetectPosition: {fileID: 874677064}
   ScenePosition: {fileID: 1584390932}
-  VideoPlayer: {fileID: 0}
   camManager: {fileID: 805898575}
   eyeInfoText: 
   IPD: 64
   EyeHeight: 32
+  ball00: {fileID: 0}
+  ballUp: {fileID: 0}
+  ballRight: {fileID: 0}
   ARError: 
 --- !u!4 &890627619
 Transform:
@@ -10726,6 +10729,7 @@ MonoBehaviour:
   deviceCamera: {fileID: 10}
   eyeCamera: {fileID: 1648389030}
   lookPoint: {fileID: 0}
+  cameraParent: {fileID: 0}
   lineRenderer: {fileID: 1496957396}
   horizontal: 0
   vertical: 0

@@ -2,3 +2,11 @@
 
 2024-02-09 17:34:40,797 ERROR [orbbec.ni.device_streamset] failed to open device: 	Could not open "\\?\usb#vid_2bc5&pid_0404#5&1bde3aaf&0&3#{c3b5f022-5a42-1980-1909-ea72095601b1}": USB device not found!
 
+2024-02-15 16:58:31,677 ERROR [orbbec.ni.device_streamset] failed to open device: 	Could not open "\\?\usb#vid_2bc5&pid_0404#5&1bde3aaf&0&3#{c3b5f022-5a42-1980-1909-ea72095601b1}": USB device not found!
+
+2024-02-15 17:23:26,456 ERROR [orbbec.ni.device_streamset] failed to open device: 	Could not open "\\?\usb#vid_2bc5&pid_0404#5&1bde3aaf&0&3#{c3b5f022-5a42-1980-1909-ea72095601b1}": USB transfer timeout!
+
+2024-02-15 17:50:53,191 ERROR [orbbec.ni.device_streamset] failed to open device: 	Could not open "\\?\usb#vid_2bc5&pid_0404#5&1bde3aaf&0&3#{c3b5f022-5a42-1980-1909-ea72095601b1}": USB transfer timeout!
+
+2024-03-11 12:33:44,568 ERROR [orbbec.ni.device_streamset] failed to open device: 	Could not open "\\?\usb#vid_2bc5&pid_0404#5&1bde3aaf&0&3#{c3b5f022-5a42-1980-1909-ea72095601b1}": USB device not found!
+

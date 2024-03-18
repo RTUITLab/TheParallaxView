@@ -11,6 +11,7 @@ public class OffAxisProjection : MonoBehaviour
 	public Camera deviceCamera;
 	public Camera eyeCamera;
 	public Transform lookPoint;
+    public Transform cameraParent;
 
     private Camera copyeye;
 	private Vector3 eyeye = Vector3.zero;
@@ -40,8 +41,9 @@ void LateUpdate()
         //Vector3 fwd = eyeCamera.transform.worldToLocalMatrix.MultiplyVector (deviceCamera.transform.forward); // normal of plane defined by device camera
         //Plane device_plane = new Plane( fwd, deviceCamPos);
 
-        Vector3 close = device_plane.ClosestPointOnPlane (Vector3.zero);
-		near = close.magnitude;
+        var localEyeCamera = eyeCamera.transform.position - cameraParent.position;
+        Vector3 close = device_plane.ClosestPointOnPlane (localEyeCamera);
+		near = (close - localEyeCamera).magnitude;
 
 		// couldn't get device orientation to work properly in all cases, so just landscape for now (it's just the UI that is locked to landscape, everyting else works just fine)
 		/*if (Screen.orientation == ScreenOrientation.Portrait) { 
@@ -50,8 +52,6 @@ void LateUpdate()
 			top = trackedCamPos.y + 0.000f;
 			bottom = trackedCamPos.y - 0.135f;
 		} else {*/
-
-		far = 10f; // may need bigger for bigger scenes, max 10 metres for now
 
 		var pos = eyeCamera.transform.position;
 		var hor = eyeCamera.transform.right * horizontal;
