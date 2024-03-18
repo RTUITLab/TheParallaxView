@@ -166,8 +166,10 @@ public class CameraMover : MonoBehaviour
                 _minDiff = diff.magnitude;
                 _worldCameraPoint.position += _velocity * Time.deltaTime;
                 float mult = (_maxDiff - _minDiff) / _maxDiff;
-                Debug.Log($"Mult: {mult}");
+                var oldPos = _worldCameraPoint.position;
                 _world.rotation = Quaternion.Lerp(_prevRotation, _rotation, RotationFunc(mult));
+                var deltaVec = _worldCameraPoint.position - oldPos;
+                _toMove.position += deltaVec;
 
                 xPosController.updateSetpoint(_worldCameraPoint.position.x);
                 yPosController.updateSetpoint(_worldCameraPoint.position.y);
