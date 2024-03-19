@@ -90,7 +90,7 @@ public class HeadTrackManager : MonoBehaviour {
         Vector3 scenepos = ScenePosition.transform.localPosition;
         virtualctosX = campos.x * proportion;
         virtualctosY = campos.y * proportion;
-        virtualctosZ = campos.z * proportion - scenepos.z;
+        virtualctosZ = campos.z * proportion;
 
 
     }
@@ -316,7 +316,7 @@ public class HeadTrackManager : MonoBehaviour {
 
 
         if (status)
-            plusdif = new Vector3(CameraDetectPosition.transform.position.x - (xReg * proportion - virtualctosX), yReg * proportion - virtualctosY, zReg * proportion - virtualctosZ);
+            plusdif = new Vector3(xReg * proportion, yReg * proportion, virtualctosZ - zReg * proportion);
         Debug.Log("REG: " + xReg + " " + yReg + " " + zReg);
         Debug.Log("POSPOSPOS: " + xPos + " " + yPos + " " + zPos);
         Debug.Log("Screen2: " + screenWidth + " " + screenHeight);
