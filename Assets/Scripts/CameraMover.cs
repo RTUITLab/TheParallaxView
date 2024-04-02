@@ -28,8 +28,11 @@ public class CameraMover : MonoBehaviour
         {
             _point.SetActive(value);
             _point.transform.position -= offset;
-            Rotation = _point.transform.rotation;
+            //var localEulers = _point.transform.localRotation.eulerAngles;
+            //localEulers = new Vector3(localEulers.z, localEulers.y, localEulers.x);
+            //_point.transform.localRotation = Quaternion.Euler(localEulers);
             Rotation = Quaternion.Euler(_point.transform.rotation.eulerAngles * -1);
+            Rotation = Quaternion.Inverse(_point.transform.rotation);
         }
     }
 
