@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.087771274, g: 0.19242033, b: 0.20894122, a: 1}
+  m_IndirectSpecularColor: {r: 0.08774089, g: 0.19241506, b: 0.20897481, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -28150,6 +28150,16 @@ PrefabInstance:
       propertyPath: WorldCam
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2876862332561751042, guid: 89ea6ef136a30e84c96284cfbd5128ee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876862332581714281, guid: 89ea6ef136a30e84c96284cfbd5128ee,
+        type: 3}
+      propertyPath: ScenePosition
+      value: 
+      objectReference: {fileID: 949893348}
     - target: {fileID: 2876862333428300438, guid: 89ea6ef136a30e84c96284cfbd5128ee,
         type: 3}
       propertyPath: m_AllowMSAA
@@ -28175,6 +28185,12 @@ PrefabInstance:
 --- !u!4 &949893347 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2876862333295922836, guid: 89ea6ef136a30e84c96284cfbd5128ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 949893346}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &949893348 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2876862334106326701, guid: 89ea6ef136a30e84c96284cfbd5128ee,
     type: 3}
   m_PrefabInstance: {fileID: 949893346}
   m_PrefabAsset: {fileID: 0}
