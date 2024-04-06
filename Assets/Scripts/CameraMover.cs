@@ -56,9 +56,9 @@ public class CameraMover : MonoBehaviour
 
     public CameraPoint[] Points => _points;
 
-    PIDController xPosController = new PIDController(.1f, 0f, 0f, 0f);
-    PIDController yPosController = new PIDController(.1f, 0f, 0f, 0f);
-    PIDController zPosController = new PIDController(.1f, 0f, 0f, 0f);
+    PIDController xPosController = new PIDController(.05f, 0f, 0f, 0f);
+    PIDController yPosController = new PIDController(.05f, 0f, 0f, 0f);
+    PIDController zPosController = new PIDController(.05f, 0f, 0f, 0f);
 
     private void Start()
     {
