@@ -3,9 +3,9 @@ using UnityEngine;
 
 public static class ServerConnection
 {
-    public static IEnumerator GetSeasons(SeasonsJson result, string requestName = "Get seasons")
+    public static IEnumerator SendRequest<T>(string message, ICopiable<T> result) where T : class
     {
-        yield return SendRequest<SeasonsJson>(requestName, "Get seasons", result);
+        yield return SendRequest("Default request: ", message, result);
     }
 
     public static IEnumerator SendRequest<T>(string requestName, string message, ICopiable<T> result) where T : class
@@ -18,6 +18,9 @@ public static class ServerConnection
         if(result is SeasonsJson seasonsResult)
         {
             var data = new SeasonsJson();
+            data.time = message;
+            data.weather = "sun";
+            data.voice = "none";
             seasonsResult.Copy(data);
         }
         else
