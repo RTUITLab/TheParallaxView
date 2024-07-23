@@ -385,12 +385,12 @@ MonoBehaviour:
   - TimeName: morning
     SunColor: {r: 1, g: 0.7882353, b: 0.8879512, a: 1}
     SunRotation: {x: 150, y: 0, z: 0}
-    SunIntensity: 1
+    SunIntensity: 0.8
     SkyboxBrightness: 0.7
   - TimeName: evening
     SunColor: {r: 1, g: 0.649552, b: 0.2679245, a: 1}
     SunRotation: {x: 30, y: 0, z: 0}
-    SunIntensity: 1
+    SunIntensity: 0.8
     SkyboxBrightness: 0.7
 --- !u!114 &481653769
 MonoBehaviour:
