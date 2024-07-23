@@ -1,3 +1,6 @@
+using System;
+
+[Serializable]
 public class SeasonsJson : ICopiable<SeasonsJson>
 {
     public string weather;

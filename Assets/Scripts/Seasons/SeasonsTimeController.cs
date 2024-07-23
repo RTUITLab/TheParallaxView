@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class SeasonsTimeController : MonoBehaviour
+public class SeasonsTimeController : BaseSeasonElementController
 {
     [Serializable]
     private class SeasonTime
@@ -26,9 +26,9 @@ public class SeasonsTimeController : MonoBehaviour
 
     private const string MODIFIER_NAME = "SsnTime";
 
-    private void Start()
+    protected override void Start()
     {
-        SeasonsController.SeasonsUpdated += UpdateTime;
+        base.Start();
         _times = new();
         foreach(var time in Times)
         {
@@ -36,9 +36,9 @@ public class SeasonsTimeController : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
+    protected override void OnDestroy()
     {
-        SeasonsController.SeasonsUpdated -= UpdateTime;
+        base.OnDestroy();
         RenderSettings.skybox.SetFloat("_Exposure", 1f);
     }
 
@@ -58,7 +58,7 @@ public class SeasonsTimeController : MonoBehaviour
         }
     }
 
-    private void UpdateTime(SeasonsJson json)
+    protected override void OnSeasonUpdated(SeasonsJson json)
     {
         if (json.time == _previousTime)
             return;

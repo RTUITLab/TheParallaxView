@@ -11,6 +11,23 @@ public class SunController : MonoBehaviour
     public readonly Dictionary<string, float> Intensities = new();
     public readonly Dictionary<string, Color> ColorsSubtract = new();
 
+    private float _intensityTarget = 1f, _intensityValue = 1f;
+    private bool _intensityAnimation = false;
+
+    private void Update()
+    {
+        if(_intensityAnimation)
+        {
+            _intensityValue = Mathf.Lerp(_intensityValue, _intensityTarget, Time.deltaTime);
+            if(Mathf.Abs(_intensityTarget - _intensityValue) <= .05f)
+            {
+                _intensityAnimation = false;
+                _intensityValue = _intensityTarget;
+            }
+            RenderSettings.ambientIntensity = _intensityValue;
+        }
+    }
+
     public void UpdateSun(float transitionTime)
     {
         Color color = Color.black;
@@ -21,5 +38,7 @@ public class SunController : MonoBehaviour
 
         _sun.DOColor(color, transitionTime);
         _sun.DOIntensity(intensity, transitionTime);
+        _intensityTarget = intensity;
+        _intensityAnimation = true;
     }
 }

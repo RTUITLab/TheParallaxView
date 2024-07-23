@@ -17,10 +17,7 @@ public static class ServerConnection
 
         if(result is SeasonsJson seasonsResult)
         {
-            var data = new SeasonsJson();
-            data.time = message;
-            data.weather = "sun";
-            data.voice = "none";
+            var data = TESTSeasons.Answer;
             seasonsResult.Copy(data);
         }
         else

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
-public class SoundController : MonoBehaviour
+public class SoundController : BaseSeasonElementController
 {
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private string _pathToSoundsFolder;
@@ -11,18 +11,13 @@ public class SoundController : MonoBehaviour
     private Coroutine _cor;
     private float _initVolume = 1f;
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
         _initVolume = _audioSource.volume;
-        SeasonsController.SeasonsUpdated += OnSeasonUpdated;
     }
 
-    private void OnDestroy()
-    {
-        SeasonsController.SeasonsUpdated -= OnSeasonUpdated;
-    }
-
-    private void OnSeasonUpdated(SeasonsJson json)
+    protected override void OnSeasonUpdated(SeasonsJson json)
     {
         if (json.voice == _prevSoundName)
             return;
