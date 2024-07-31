@@ -6,10 +6,12 @@ public class SeasonsController : MonoBehaviour
 {
     [SerializeField] private float _updateTime;
     [SerializeField] private float _transitionTime;
+    [SerializeField] private bool _offlineTestMode;
+    [SerializeField] private bool _debugResponses;
 
     public static event Action<SeasonsJson> SeasonsUpdated;
     public static float TransitionTime { get; private set; } = 1f;
-    public const string SERVER_MESSAGE = "GetWeather";
+    public const string SERVER_MESSAGE = "/templates/1";
 
     private Coroutine _startCor;
 
@@ -24,9 +26,19 @@ public class SeasonsController : MonoBehaviour
         while(true)
         {
             SeasonsJson seasons = new();
-            //yield return ServerConnection.SendRequest("Get seasons", seasons);
-            //For test
-            yield return ServerConnection.SendRequest(SERVER_MESSAGE, seasons);
+            if (_offlineTestMode)
+            {
+                seasons = TESTSeasons.Answer;
+            }
+            else
+            {
+                yield return ServerConnection.SendRequest(SERVER_MESSAGE, seasons);
+                if(_debugResponses)
+                {
+                    Debug.Log($"Response: {seasons.ToDebugString()}");
+                }
+            }
+                
             SeasonsUpdated?.Invoke(seasons);
             yield return new WaitForSeconds(_updateTime);
         }

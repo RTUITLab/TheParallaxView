@@ -1,22 +1,27 @@
 using System;
 
 [Serializable]
-public class SeasonsJson : ICopiable<SeasonsJson>
+public class SeasonsJson : ICopiable<SeasonRawJSON>
 {
-    public string weather;
-    public string time;
-    public string voice;
-    public string VideoOnBack;
-    public string Scene;
+    public string weather = "sun";
+    public string time = "day";
+    public string voice = "none";
+    public string VideoOnBack = "Castle";
+    public string Scene = "gardenOfStones";
 
     public SeasonsJson() { }
 
-    public void Copy(SeasonsJson obj)
+    public void Copy(SeasonRawJSON obj)
     {
-        weather = obj.weather;
-        time = obj.time;
-        voice = obj.voice;
-        VideoOnBack = obj.VideoOnBack;
-        Scene = obj.Scene;
+        weather = obj.weather.designation;
+        time = obj.time.designation;
+        voice = obj.voice.designation;
+        VideoOnBack = obj.VideoOnBack.designation;
+        Scene = obj.Scene.designation;
+    }
+
+    public string ToDebugString()
+    {
+        return $"weather: {weather}, time: {time}, voice: {voice}, VideoOnBack: {VideoOnBack}, Scene: {Scene}";
     }
 }
