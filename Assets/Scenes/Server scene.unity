@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1356187058}
-  m_IndirectSpecularColor: {r: 0.38627422, g: 0.42887202, b: 0.4990554, a: 1}
+  m_IndirectSpecularColor: {r: 0.44069916, g: 0.489357, b: 0.56948566, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2104,6 +2104,26 @@ PrefabInstance:
       propertyPath: WorldCam
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2876862332724249559, guid: 89ea6ef136a30e84c96284cfbd5128ee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ff993faf91e6c774ba3770cd29fb0243, type: 2}
+    - target: {fileID: 2876862332759810843, guid: 89ea6ef136a30e84c96284cfbd5128ee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ff993faf91e6c774ba3770cd29fb0243, type: 2}
+    - target: {fileID: 2876862332907302304, guid: 89ea6ef136a30e84c96284cfbd5128ee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ff993faf91e6c774ba3770cd29fb0243, type: 2}
+    - target: {fileID: 2876862333398228926, guid: 89ea6ef136a30e84c96284cfbd5128ee,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ff993faf91e6c774ba3770cd29fb0243, type: 2}
     - target: {fileID: 2876862333428300438, guid: 89ea6ef136a30e84c96284cfbd5128ee,
         type: 3}
       propertyPath: m_AllowMSAA
