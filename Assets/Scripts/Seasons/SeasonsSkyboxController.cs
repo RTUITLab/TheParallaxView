@@ -7,6 +7,7 @@ public class SeasonsSkyboxController : BaseSeasonElementController
     [SerializeField] private VideoPlayer _player;
     [SerializeField] private BlackScreen _blackScreen;
     [SerializeField] private string _resourcesPathToVideos;
+    [SerializeField] private Material _skyBoxMaterial;
 
     private string _prevVideo = "none";
 
@@ -14,6 +15,7 @@ public class SeasonsSkyboxController : BaseSeasonElementController
     {
         base.Start();
         _player.prepareCompleted += VideoPrepareCompleted;
+        RenderSettings.skybox = _skyBoxMaterial;
     }
 
     protected override void OnDestroy()
