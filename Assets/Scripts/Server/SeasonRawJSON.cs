@@ -19,6 +19,6 @@ public class SeasonRawJSON
     public StringValue weather;
     public StringValue time;
     public StringValue voice;
-    public StringValue VideoOnBack;
-    public StringValue Scene;
+    public StringValue video;
+    public StringValue scene;
 }

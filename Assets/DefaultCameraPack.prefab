@@ -1911,7 +1911,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2876862332561751043}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.9}
+  m_LocalPosition: {x: 0, y: 0.1, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2224,10 +2224,10 @@ MonoBehaviour:
   lookPoint: {fileID: 2876862334044786188}
   cameraParent: {fileID: 2876862333295922836}
   lineRenderer: {fileID: 2876862332630267417}
-  horizontal: 3.2
-  vertical: 1.45
+  horizontal: 7
+  vertical: 3.181818
   near: 0.01
-  far: 100
+  far: 160
   camManager: {fileID: 2876862332630267396}
   nearDist: 4.078
 --- !u!120 &2876862332630267417
@@ -9493,7 +9493,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2876862334106326700
 Transform:
   m_ObjectHideFlags: 0

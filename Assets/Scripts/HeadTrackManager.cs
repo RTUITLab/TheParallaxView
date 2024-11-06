@@ -20,7 +20,7 @@ public class HeadTrackManager : MonoBehaviour {
     [SerializeField] private float speed, laneSpeed;
 
 
-[SerializeField]
+    [SerializeField]
 	public GameObject headCenter;
 
     public GameObject CameraDetectPosition;
@@ -279,17 +279,17 @@ public class HeadTrackManager : MonoBehaviour {
     private static float zReg = 0f;
 
     // Пример использования
-    private float kpX = 0.1f;  // Коэффициент пропорциональной части
-    private float kiX = 0.00f;  // Коэффициент интегральной части
-    private float kdX = 0.00f;  // Коэффициент дифференциальной части
+    private float kpX = 0.3f;  // Коэффициент пропорциональной части
+    private float kiX = 0.01f;  // Коэффициент интегральной части
+    private float kdX = 0.01f;  // Коэффициент дифференциальной части
      
-    private float kpY = 0.1f;  // Коэффициент пропорциональной части
-    private float kiY = 0.00f;  // Коэффициент интегральной части
-    private float kdY = 0.00f;  // Коэффициент дифференциальной части
+    private float kpY = 0.3f;  // Коэффициент пропорциональной части
+    private float kiY = 0.01f;  // Коэффициент интегральной части
+    private float kdY = 0.01f;  // Коэффициент дифференциальной части
      
-    private float kpSquare = 0.1f;  // Коэффициент пропорциональной части
-    private float kiSquare = 0.00f;  // Коэффициент интегральной части
-    private float kdSquare = 0.00f;  // Коэффициент дифференциальной части
+    private float kpSquare = 0.3f;  // Коэффициент пропорциональной части
+    private float kiSquare = 0.01f;  // Коэффициент интегральной части
+    private float kdSquare = 0.01f;  // Коэффициент дифференциальной части
 
 
 
@@ -314,9 +314,14 @@ public class HeadTrackManager : MonoBehaviour {
         controllerZ.updateSetpoint((zPos));
         zReg = zReg + (float)controllerZ.compute(zReg);
 
+        Vector3 campos = CameraDetectPosition.transform.localPosition;
+        Vector3 scenepos = ScenePosition.transform.localPosition;
+        virtualctosX = campos.x * proportion;
+        virtualctosY = campos.y * proportion;
+        virtualctosZ = campos.z * proportion;
 
         if (status)
-            plusdif = new Vector3(xReg * proportion, yReg * proportion, virtualctosZ - zReg * proportion);
+            plusdif = new Vector3(-xReg * proportion,virtualctosY + yReg * proportion,virtualctosZ + zReg * proportion);
         Debug.Log("REG: " + xReg + " " + yReg + " " + zReg);
         Debug.Log("POSPOSPOS: " + xPos + " " + yPos + " " + zPos);
         Debug.Log("Screen2: " + screenWidth + " " + screenHeight);

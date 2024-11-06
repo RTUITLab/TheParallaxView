@@ -16,8 +16,8 @@ public class SeasonsJson : ICopiable<SeasonRawJSON>
         weather = obj.weather.designation;
         time = obj.time.designation;
         voice = obj.voice.designation;
-        VideoOnBack = obj.VideoOnBack.designation;
-        Scene = obj.Scene.designation;
+        VideoOnBack = obj.video.designation;
+        Scene = obj.scene.designation;
     }
 
     public string ToDebugString()
