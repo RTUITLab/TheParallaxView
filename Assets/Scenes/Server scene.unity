@@ -803,7 +803,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _updateTime: 5
   _transitionTime: 5
-  _offlineTestMode: 0
+  _offlineTestMode: 1
   _debugResponses: 0
 --- !u!4 &481653770
 Transform:

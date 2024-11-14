@@ -18,9 +18,10 @@ public class HeadTrackManager : MonoBehaviour {
 
     private Vector3 laneTargetPos = Vector3.zero;
     [SerializeField] private float speed, laneSpeed;
+    [SerializeField] private float xClamping, yClamping, zClamping;
 
 
-[SerializeField]
+    [SerializeField]
 	public GameObject headCenter;
 
     public GameObject CameraDetectPosition;
@@ -296,10 +297,9 @@ public class HeadTrackManager : MonoBehaviour {
     //process the player position
     public void OnDetectBody(bool status, Vector3 bodyPos)
     {
-
-        float xPos = Mathf.Clamp(bodyPos.x * 1f, -15f, 15f);//clamp the ball position
-        float yPos = Mathf.Clamp(bodyPos.y * 1f, -1.5f, 1.5f);
-        float zPos = Mathf.Clamp(bodyPos.z * 1f, -15f, 15f);
+        float xPos = Mathf.Clamp(bodyPos.x * 1f, -xClamping, xClamping);//clamp the ball position
+        float yPos = Mathf.Clamp(bodyPos.y * 1f, -yClamping, yClamping);
+        float zPos = Mathf.Clamp(bodyPos.z * 1f, -zClamping, zClamping);
 
 
         PIDController controllerX = new PIDController(kpX, kiX, kdX, 0);
