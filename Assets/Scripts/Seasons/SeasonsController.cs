@@ -39,7 +39,11 @@ public class SeasonsController : MonoBehaviour
                 }
             }
                 
-            SeasonsUpdated?.Invoke(seasons);
+            if(seasons != null)
+            {
+                SeasonsUpdated?.Invoke(seasons);
+            }
+            
             yield return new WaitForSeconds(_updateTime);
         }
     }
