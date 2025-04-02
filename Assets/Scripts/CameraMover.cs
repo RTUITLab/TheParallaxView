@@ -13,10 +13,13 @@ public class CameraMover : MonoBehaviour
         [Range(0, 60)]
         [SerializeField] private float _stopTime = 0;
 
+        private MeshRenderer _renderer;
+
         public Vector3 Position => _point.transform.position;
         public Quaternion Rotation { get; private set; }
         public bool IsNull => _point == null;
         public float StopTime => _stopTime;
+        public MeshRenderer Renderer => GetRenderer();
 
         public CameraPoint(GameObject obj, float speed)
         {
@@ -28,11 +31,15 @@ public class CameraMover : MonoBehaviour
         {
             _point.SetActive(value);
             _point.transform.position -= offset;
-            //var localEulers = _point.transform.localRotation.eulerAngles;
-            //localEulers = new Vector3(localEulers.z, localEulers.y, localEulers.x);
-            //_point.transform.localRotation = Quaternion.Euler(localEulers);
             Rotation = Quaternion.Euler(_point.transform.rotation.eulerAngles * -1);
             Rotation = Quaternion.Inverse(_point.transform.rotation);
+        }
+
+        public MeshRenderer GetRenderer()
+        {
+            if(_renderer == null)
+                _renderer = _point.GetComponent<MeshRenderer>();
+            return _renderer;
         }
     }
 
@@ -42,6 +49,7 @@ public class CameraMover : MonoBehaviour
     [SerializeField] private Vector3 _positionOffset;
     [SerializeField] private Transform _world;
     [SerializeField] private Transform _worldCameraPoint;
+    [SerializeField, Min(0f)] private float _generalSpeed = 1f;
 
     private int _currentPosIndex = 0;
     private Vector3 _nextPos = Vector3.zero;
@@ -55,10 +63,11 @@ public class CameraMover : MonoBehaviour
     private Coroutine _waitTimeCor = null;
 
     public CameraPoint[] Points => _points;
+    public float GeneralSpeed => _generalSpeed;
 
-    PIDController xPosController = new PIDController(.05f, 0f, 0f, 0f);
-    PIDController yPosController = new PIDController(.05f, 0f, 0f, 0f);
-    PIDController zPosController = new PIDController(.05f, 0f, 0f, 0f);
+    PIDController xPosController = new PIDController(.03f, .005f, 0f, 0f);
+    PIDController yPosController = new PIDController(.03f, .005f, 0f, 0f);
+    PIDController zPosController = new PIDController(.03f, .005f, 0f, 0f);
 
     private void Start()
     {
@@ -81,7 +90,7 @@ public class CameraMover : MonoBehaviour
     {
         _currentPosIndex = (_currentPosIndex + 1) % _points.Length;
         _nextPos = _points[_currentPosIndex].Position;
-        _speed = _points[_currentPosIndex].speed;
+        _speed = _points[_currentPosIndex].speed * _generalSpeed;
 
         _prevRotation = _rotation;
         _rotation = _points[_currentPosIndex].Rotation;
